@@ -78,8 +78,27 @@ console.log(person1.poop());
 */
 
 class Car {
-
+constructor(model, milesPerGallon){
+  this.model = model;
+  this.milesPerGallon = milesPerGallon;
+  this.tank = 0;
+  this.odometer = 0;
 }
+fill(gallons){
+  this.tank = gallons + this.tank;
+} 
+drive(distance){
+  this.odometer = distance + this.odometer;
+  this.tank = this.tank - distance / this.milesPerGallon;
+  if(this.tank = 0){
+    return `I ran out of fuel at ${this.odometer} miles!`
+  }
+}
+}
+
+  // if ((this.tank = 0)) {
+  //   return `I ran out of fuel at ${this.odometer} miles!`;
+  // }
 
 /*
   TASK 3
@@ -94,9 +113,18 @@ class Car {
         + {name} and {location} of course come from the instance's own properties.
 */
 class Lambdasian {
-
+  constructor(obj){
+    this.name = obj.name;
+    this.age = obj.age;
+    this.location = obj.location;
+  }
+  speak(){
+    return `Hello my name is ${this.name}, I am from ${this.location}`
+  }
 }
-
+// const obj = {this.name: name,
+//   this.age: age,
+//   this.location: location};
 /*
   TASK 4
     - Write an Instructor class extending Lambdasian.
@@ -111,10 +139,23 @@ class Lambdasian {
         + `demo` receives a `subject` string as an argument and returns the phrase 'Today we are learning about {subject}' where subject is the param passed in.
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
-class Instructor {
-
+class Instructor extends Lambdasian{
+  constructor(instructorObj){
+  super(instructorObj);
+  this.specialty = instructorObj.specialty;
+  this.favLanguage = instructorObj.favLanguage;
+  this.catchPhrase = instructorObj.catchPhrase;
 }
-
+demo(subject){
+  this.subject = subject;
+  return `Today we are learning about ${this.subject}`
+}
+grade(student, subject){
+  this.student = student;
+  this.subject = subject;
+  return `${this.student} receives a perfect score on ${this.subject}`
+}
+}
 /*
   TASK 5
     - Write a Student class extending Lambdasian.
