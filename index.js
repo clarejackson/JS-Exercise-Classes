@@ -88,10 +88,13 @@ fill(gallons){
   this.tank = gallons + this.tank;
 } 
 drive(distance){
-  this.odometer = distance + this.odometer;
-  this.tank = this.tank - distance / this.milesPerGallon;
-  if(this.tank = 0){
+  if(this.tank * this.milesPerGallon < distance){
+    this.odometer = (this.tank * this.milesPerGallon) + this.odometer;
+    this.tank = 0;
     return `I ran out of fuel at ${this.odometer} miles!`
+  } else {
+    this.tank = this.tank - distance / this.milesPerGallon;
+    this.odometer = distance + this.odometer;
   }
 }
 }
@@ -171,8 +174,23 @@ grade(student, subject){
         + `PRAssignment` a method that receives a subject as an argument and returns `student.name has submitted a PR for {subject}`
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
-class Student {
-
+class Student extends Lambdasian{
+  constructor(studentObj){
+    super(studentObj);
+    this.previousBackground = studentObj.previousBackground;
+    this.className = studentObj.className;
+    this.favSubjects = studentObj.favSubjects
+    
+  }
+  listSubjects(){
+    return `Loving ${this.favSubjects}!`
+  }
+  PRAssignment(subject){
+    return `${this.name} has submitted a PR for ${subject}`
+  }
+  sprintChallenge(subject){
+    return `${this.name} has begun sprint challenge on ${subject}`
+  }
 }
 
 /*
