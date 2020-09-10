@@ -150,13 +150,10 @@ class Instructor extends Lambdasian{
   this.catchPhrase = instructorObj.catchPhrase;
 }
 demo(subject){
-  this.subject = subject;
-  return `Today we are learning about ${this.subject}`
+  return `Today we are learning about ${subject}`
 }
 grade(student, subject){
-  this.student = student;
-  this.subject = subject;
-  return `${this.student} receives a perfect score on ${this.subject}`
+  return `${student.name} receives a perfect score on ${subject}`
 }
 }
 /*
@@ -206,8 +203,18 @@ class Student extends Lambdasian{
         + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
-class ProjectManager {
-
+class ProjectManager extends Instructor{
+constructor(pmObj){
+  super(pmObj);
+  this.gradClassName = pmObj.gradClassName;
+  this.favInstructor = pmObj.favInstructor;
+}
+standUp(channel){
+  return `${this.name} announces to ${channel}, @channel standy times!`
+}
+debugsCode(student, subject){
+  return `${this.name} debugs ${student.name}'s code on ${subject}`
+}
 }
 
 /*
