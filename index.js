@@ -47,7 +47,7 @@ constructor(name, age){
   this.stomach = [];
 }
 eat(edible){
-if(this.stomach.length < 10){
+  if(this.stomach.length < 10){
   this.stomach.push(edible);
 }
 }
@@ -78,23 +78,23 @@ console.log(person1.poop());
 */
 
 class Car {
-constructor(model, milesPerGallon){
-  this.model = model;
-  this.milesPerGallon = milesPerGallon;
-  this.tank = 0;
-  this.odometer = 0;
-}
-fill(gallons){
-  this.tank = gallons + this.tank;
-} 
-drive(distance){
-  if(this.tank * this.milesPerGallon < distance){
-    this.odometer = (this.tank * this.milesPerGallon) + this.odometer;
+  constructor(model, milesPerGallon){
+    this.model = model;
+    this.milesPerGallon = milesPerGallon;
     this.tank = 0;
-    return `I ran out of fuel at ${this.odometer} miles!`
-  } else {
-    this.tank = this.tank - distance / this.milesPerGallon;
-    this.odometer = distance + this.odometer;
+    this.odometer = 0;
+}
+  fill(gallons){
+    this.tank = gallons + this.tank;
+} 
+  drive(distance){
+    if(this.tank * this.milesPerGallon < distance){
+      this.odometer = (this.tank * this.milesPerGallon) + this.odometer;
+      this.tank = 0;
+      return `I ran out of fuel at ${this.odometer} miles!`
+    } else {
+      this.tank = this.tank - distance / this.milesPerGallon;
+      this.odometer = distance + this.odometer;
   }
 }
 }
@@ -144,16 +144,16 @@ class Lambdasian {
 */
 class Instructor extends Lambdasian{
   constructor(instructorObj){
-  super(instructorObj);
-  this.specialty = instructorObj.specialty;
-  this.favLanguage = instructorObj.favLanguage;
-  this.catchPhrase = instructorObj.catchPhrase;
+    super(instructorObj);
+    this.specialty = instructorObj.specialty;
+    this.favLanguage = instructorObj.favLanguage;
+    this.catchPhrase = instructorObj.catchPhrase;
 }
-demo(subject){
-  return `Today we are learning about ${subject}`
+  demo(subject){
+    return `Today we are learning about ${subject}`
 }
-grade(student, subject){
-  return `${student.name} receives a perfect score on ${subject}`
+  grade(student, subject){
+    return `${student.name} receives a perfect score on ${subject}`
 }
 }
 /*
@@ -204,16 +204,16 @@ class Student extends Lambdasian{
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
 class ProjectManager extends Instructor{
-constructor(pmObj){
-  super(pmObj);
-  this.gradClassName = pmObj.gradClassName;
-  this.favInstructor = pmObj.favInstructor;
+  constructor(pmObj){
+    super(pmObj);
+    this.gradClassName = pmObj.gradClassName;
+    this.favInstructor = pmObj.favInstructor;
 }
-standUp(channel){
-  return `${this.name} announces to ${channel}, @channel standy times!`
+  standUp(channel){
+    return `${this.name} announces to ${channel}, @channel standy times!`
 }
-debugsCode(student, subject){
-  return `${this.name} debugs ${student.name}'s code on ${subject}`
+  debugsCode(student, subject){
+    return `${this.name} debugs ${student.name}'s code on ${subject}`
 }
 }
 
